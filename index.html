@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Requisition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-decor">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+    </div>
+    
+    <main class="container">
+        <div class="glass-card">
+            <header class="form-header">
+                <div class="logo-container">
+                    <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h1>Diet Test Score</h1>
+                <p class="subtitle">Please fill out the information below to proceed.</p>
+            </header>
+
+            <form id="requisitionForm" novalidate>
+                <div class="input-group">
+                    <label for="fullName">Full Name</label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="text" 
+                            id="fullName" 
+                            name="fullName" 
+                            maxlength="50" 
+                            required 
+                            placeholder="e.g. John Doe"
+                            autocomplete="name"
+                        >
+                        <span class="char-counter"><span id="charCount">0</span>/50</span>
+                    </div>
+                    <span class="error-msg" id="nameError">Full name is required (max 50 characters).</span>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="age">Age</label>
+                        <div class="input-wrapper">
+                            <input 
+                                type="number" 
+                                id="age" 
+                                name="age" 
+                                min="0" 
+                                max="150" 
+                                required 
+                                placeholder="Age"
+                            >
+                        </div>
+                        <span class="error-msg" id="ageError">Please enter a valid age.</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="testScore">Test Score</label>
+                        <div class="input-wrapper">
+                            <input 
+                                type="number" 
+                                id="testScore" 
+                                name="testScore" 
+                                min="0" 
+                                max="99" 
+                                required 
+                                placeholder="Score (0-99)"
+                                oninput="if(this.value.length > 2) this.value = this.value.slice(0, 2);"
+                            >
+                        </div>
+                        <span class="error-msg" id="scoreError">Required (max 2 digits).</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span class="btn-text">Submit Requisition</span>
+                    <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <svg class="toast-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M22 4L12 14.01l-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="toast-message">
+                <h4>Success!</h4>
+                <p>Requisition submitted successfully.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
